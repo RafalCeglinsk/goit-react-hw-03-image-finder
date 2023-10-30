@@ -60,7 +60,7 @@ export class App extends Component {
   };
 
   render() {
-    const { images, isLoading, error } = this.state;
+    const { images, isLoading } = this.state;
 
     return (
       <div>
