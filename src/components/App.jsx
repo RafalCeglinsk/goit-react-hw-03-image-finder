@@ -3,7 +3,7 @@ import axios from 'axios';
 import { SearchBar } from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
 import Button from './Button/button';
-import CustomLoader from './Loader/Loader';
+import Loader from './Loader/Loader';
 
 export class App extends Component {
   state = {
@@ -12,6 +12,8 @@ export class App extends Component {
     error: '',
     currentPage: 1,
     query: '',
+    showModal: false,
+    selectedImage: null,
   };
 
   async componentDidMount() {
@@ -60,14 +62,18 @@ export class App extends Component {
   };
 
   render() {
-    const { images, isLoading } = this.state;
+    const { images, isLoading, showModal, selectedImage } = this.state;
 
     return (
       <div>
         <SearchBar onSubmit={this.handleSubmit} />
-        <ImageGallery images={images} />
+        <ImageGallery
+          images={images}
+          showModal={showModal}
+          selectedImage={selectedImage}
+        />
         <Button onClick={this.handleLoadMore} />
-        <CustomLoader loading={isLoading} />
+        <Loader loading={isLoading} />
       </div>
     );
   }
