@@ -3,6 +3,7 @@ import axios from 'axios';
 import { SearchBar } from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
 import Button from './Button/button';
+import CustomLoader from './Loader/Loader';
 
 export class App extends Component {
   state = {
@@ -66,6 +67,7 @@ export class App extends Component {
         <SearchBar onSubmit={this.handleSubmit} />
         <ImageGallery images={images} />
         <Button onClick={this.handleLoadMore} />
+        <CustomLoader loading={isLoading} />
       </div>
     );
   }
